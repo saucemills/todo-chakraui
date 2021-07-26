@@ -6,10 +6,10 @@ import TodoList from '../components/TodoList';
 import AddTodo from '../components/AddTodo';
 
 export default function Home() {
-  const storage = window.localStorage();
-  const [todos, setTodos] = useState(
-    () => JSON.parse(storage.getItem('todos')) || []
-  );
+  const [todos, setTodos] = useState(() => {
+    if (typeof window !== 'undefined')
+      JSON.parse(localStorage.getItem('todos')) || [];
+  });
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
