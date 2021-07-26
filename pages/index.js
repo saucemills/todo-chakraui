@@ -6,8 +6,9 @@ import TodoList from '../components/TodoList';
 import AddTodo from '../components/AddTodo';
 
 export default function Home() {
+  const storage = window.localStorage();
   const [todos, setTodos] = useState(
-    () => JSON.parse(localStorage.getItem('todos')) || []
+    () => JSON.parse(storage.getItem('todos')) || []
   );
 
   useEffect(() => {
