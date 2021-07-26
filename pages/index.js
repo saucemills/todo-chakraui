@@ -7,8 +7,11 @@ import AddTodo from '../components/AddTodo';
 
 export default function Home() {
   const [todos, setTodos] = useState(() => {
-    if (typeof window !== 'undefined')
+    if (typeof window !== 'undefined') {
       JSON.parse(localStorage.getItem('todos')) || [];
+    } else {
+      [];
+    }
   });
 
   useEffect(() => {
@@ -26,7 +29,8 @@ export default function Home() {
   }
 
   function addTodo(newTodo) {
-    setTodos([...todos, newTodo]);
+    if (!todos) setTodos([newTodo]);
+    else setTodos([...todos, newTodo]);
   }
 
   const { colorMode, toggleColorMode } = useColorMode();

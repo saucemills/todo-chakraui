@@ -10,7 +10,7 @@ import {
 import { FaTrash } from 'react-icons/fa';
 
 function TodoList({ todos, deleteTodo }) {
-  if (!todos.length) {
+  if (!todos?.length) {
     return (
       <Badge colorScheme='green' p='4' m='4' borderRadius='lg'>
         No todos at the moment.
